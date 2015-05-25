@@ -26,6 +26,9 @@ module Debug.Foreign where
     }
   """ :: forall a e. a -> Eff (trace :: Trace | e) a
 
+  fprintM :: forall a m. (Applicative m) => a -> m a 
+  fprintM x = pure (fprintUnsafe x)
+
   fspy = fprintUnsafe
 
 module Debug.Spy (spy) where 
